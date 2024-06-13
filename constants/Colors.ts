@@ -13,6 +13,7 @@ export const Colors = () => {
   const COLORS = {
     light: {
       text: '#11181C',
+      titleFontSize: 40,
       background: '#fff',
       tint: tintColorLight,
       icon: '#687076',
@@ -21,6 +22,7 @@ export const Colors = () => {
     },
     dark: {
       text: '#ECEDEE',
+      titleFontSize: 40,
       background: '#151718',
       tint: tintColorDark,
       icon: '#9BA1A6',
@@ -31,3 +33,10 @@ export const Colors = () => {
 
   return COLORS[colorScheme ?? 'light'];
 };
+
+export const constants = {
+  titleFontSize: 40,
+  titleFontWeight: 'bold',
+  titleMarginTop: 16,
+  normalFontSize: 20,
+}

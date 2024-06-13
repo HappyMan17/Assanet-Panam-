@@ -1,24 +1,39 @@
 import { Link } from "expo-router";
-import { Text, View } from "react-native";
+import { FlatList, Text, TextInput, View } from "react-native";
+import { styles } from './styles';
+import { useCallback, useEffect } from "react";
+import { useTasks } from "@/hooks/useTasks";
+import { TaskCard } from "@/components/task_card/TaskCard";
 
 export default function Tasks() {
+  const {
+    tasks,
+    error,
+    isLoading,
+    startFetchingTasks,
+  } = useTasks();
+
+  useEffect(() => {
+    if (tasks.length === 0) {
+      return;
+    }
+    startFetchingTasks();
+  }, []);
+
+
   return (
     <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+      style={styles.container}
     >
-      <Text> Fetching tasks.</Text>
-      <Link href='/' style={styles.nav_botton}> Home </Link>
+      <View style={styles.task_list}>
+        <Text style={styles.title}> Fetch Task List </Text>
+        <FlatList
+          data={tasks}
+          renderItem={({item}) => <TaskCard task={item} />}
+          keyExtractor={(item) => item.id}
+          />
+      </View>
+      <Link href='/' style={styles.button}> Home </Link>
     </View>
   );
-}
-
-const styles = {
-  nav_botton: {
-    color: 'blue',
-    fontSize: 20,
-  },
-}
+};

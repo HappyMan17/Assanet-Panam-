@@ -1,5 +1,6 @@
 import { Link } from "expo-router";
 import { Text, View } from "react-native";
+import { styles } from "./styles";
 
 export default function Index() {
   return (
@@ -10,16 +11,9 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text> Two buttons.</Text>
-      <Link href='/tasks' style={styles.nav_botton}> Tasks </Link>
-      <Link href='/tasks' style={styles.nav_botton}> List </Link>
+      <Text style={styles.title}> Task Manager </Text>
+      <Link href='/tasks' style={styles.botton}> Tasks </Link>
+      <Link href='/list' style={styles.botton}> List </Link>
     </View>
   );
-}
-
-const styles = {
-  nav_botton: {
-    color: 'blue',
-    fontSize: 20,
-  },
 }

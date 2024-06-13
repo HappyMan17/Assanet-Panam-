@@ -3,6 +3,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface TaskState {
   tasks: Task[];
+  userTasks: Task[];
   currentTask: Task | null;
   isLoading: boolean;
   error: string;
@@ -10,6 +11,7 @@ export interface TaskState {
 
 const initialState: TaskState = {
   tasks: [],
+  userTasks: [],
   currentTask: null,
   isLoading: false,
   error: '',
@@ -19,7 +21,7 @@ export const taskSlice = createSlice({
   name: 'task',
   initialState,
   reducers: {
-    setIsLoading: (state, action: PayloadAction<boolean | null>) => {
+    setIsLoading: (state, action: PayloadAction<boolean | undefined>) => {
       state.isLoading = action.payload ?? true;
     },
     setErrorMessage: (state, action: PayloadAction<string>) => {
@@ -35,8 +37,14 @@ export const taskSlice = createSlice({
     clearTasks: (state) => {
       state.tasks = [];
     },
-    addTasks: (state, action: PayloadAction<Task>) => {
-      state.tasks.push(action.payload);
+    addTasks: (state, action: PayloadAction<Task[] | []>) => {
+      if (action.payload.length > 0) {
+        state.tasks = action.payload;
+      }
+    },
+    // user tasks
+    addUserTaks: (state, action: PayloadAction<Task>) => {
+      state.userTasks.push(action.payload);
     },
   },
 });
@@ -48,6 +56,7 @@ export const {
   clearCurrentTask,
   clearTasks,
   addTasks,
+  addUserTaks,
 } = taskSlice.actions;
 
 export default taskSlice.reducer;
