@@ -10,8 +10,8 @@ export const taskMapper = (task: any) => {
       id,
       avatar,
       name,
-      createdAt,
-      // createdAt: createdAt ? new Date(createdAt).toDateString() : new Date().toDateString(),
+      // createdAt,
+      createdAt: createdAt ? new Date(createdAt).toDateString() : new Date().toDateString(),
     };
   } catch (error) {
     return null;

@@ -22,6 +22,7 @@ export const styles = StyleSheet.create({
   },
   sub_text: {
     fontSize: 15,
+    minWidth: '95%',
     textAlign: 'left',
   },
   avatar: {
