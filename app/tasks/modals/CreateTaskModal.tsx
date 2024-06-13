@@ -20,28 +20,28 @@ export const CreateTaskModal:React.FC<CreateTaskModalProps> = ({
       animationType="slide"
       visible={true}
       transparent={true}
-      >
-        <View style={styles.container}>
-          <View style={styles.card}>
-            <Text style={styles.title}> Create Task </Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Task Name"
-              value={taskName}
-              autoFocus={true}
-              onChange={(e) => setTaskName(e.nativeEvent.text)}
-            />
-            <AppButton
-            title='Add Task'
-            onPress={() => onSave(taskName)} />
-          </View>
-          <View style={{marginTop: 15}}>
-            <AppButton
-            title='Close'
-            customButtonStyle={styles.close_button}
-            onPress={onClose} />
-          </View>
+    >
+      <View style={styles.container}>
+        <View style={styles.card}>
+          <Text style={styles.title}> Create Task </Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Task Name"
+            value={taskName}
+            autoFocus={true}
+            onChangeText={(e) => setTaskName(e)}
+          />
+          <AppButton
+          title='Add Task'
+          onPress={() => onSave(taskName)} />
         </View>
+        <View style={{marginTop: 15}}>
+          <AppButton
+          title='Close'
+          customButtonStyle={styles.close_button}
+          onPress={onClose} />
+        </View>
+      </View>
     </Modal>
   )
 }
