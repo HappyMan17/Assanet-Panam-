@@ -1,44 +1,16 @@
+import { constants } from "@/constants/Colors";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
     height: '100%',
+    width: '100%',
     overflow: 'hidden',
     justifyContent: 'flex-start',
     alignItems: 'center',
     paddingHorizontal: 10,
     paddingTop: 2,
-    backgroundColor: '#ffffff',
-  },
-  task_menu: {
-    width: '100%',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-    borderWidth: 1,
-    borderRadius: 6,
-    borderColor: '#20232a',
-  },
-  task_list: {
-    width: '100%',
-    maxHeight: '80%',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-    marginTop: 4,
-  },
-  input: {
-    width: '100%',
-    height: 40,
-    paddingLeft: 10,
-    fontSize: 20,
-    borderWidth: 1,
-    borderRadius: 6,
-    borderColor: '#20232a',
-    backgroundColor: '#F8F8F8',
-    marginBottom: 14,
+    backgroundColor: constants.backgroundColor,
   },
   button: {
     width: 200,
@@ -47,7 +19,7 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#20232a',
     borderRadius: 6,
-    backgroundColor: '#0A4FC1',
+    backgroundColor: constants.buttonColor,
     textAlign: 'center',
     fontSize: 30,
     color: '#FFFFFF',

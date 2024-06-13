@@ -39,4 +39,7 @@ export const constants = {
   titleFontWeight: 'bold',
   titleMarginTop: 16,
   normalFontSize: 20,
+  navBackgroundColor: '#81E7B7',
+  backgroundColor: '#E5FAF0',
+  buttonColor: '#3D656A',
 }

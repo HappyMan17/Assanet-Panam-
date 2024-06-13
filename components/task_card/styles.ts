@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
     borderRadius: 6,
     backgroundColor: '#DCDCDC',
     overflow: 'hidden',
+    paddingHorizontal: 5,
   },
   text: {
     fontSize: constants.normalFontSize,

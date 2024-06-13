@@ -1,3 +1,4 @@
+import { constants } from "@/constants/Colors";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -8,7 +9,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     paddingTop: 5,
-    backgroundColor: '#ffffff',
+    backgroundColor: constants.backgroundColor,
   },
   button: {
     width: 200,
@@ -17,7 +18,7 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#20232a',
     borderRadius: 6,
-    backgroundColor: '#61dafb',
+    backgroundColor: constants.buttonColor,
     textAlign: 'center',
     fontSize: 30,
   },

@@ -1,6 +1,7 @@
 import { Link } from "expo-router";
 import { Text, View } from "react-native";
 import { styles } from "./styles";
+import { constants } from "@/constants/Colors";
 
 export default function Index() {
   return (
@@ -9,6 +10,7 @@ export default function Index() {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: constants.backgroundColor,
       }}
     >
       <Text style={styles.title}> Task Manager </Text>

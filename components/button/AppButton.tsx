@@ -26,9 +26,9 @@ const styles = StyleSheet.create({
     width: 100,
     paddingVertical: 8,
     borderWidth: 2,
-    borderColor: '#0A4FC1',
+    borderColor: '#3D656A',
     borderRadius: 6,
-    backgroundColor: '#0787B4',
+    backgroundColor: constants.buttonColor,
   },
   text: {  
     fontSize: constants.normalFontSize,
