@@ -14,12 +14,11 @@ export default function Tasks() {
   } = useTasks();
 
   useEffect(() => {
-    if (tasks.length === 0) {
+    if (tasks.length > 0) {
       return;
     }
     startFetchingTasks();
   }, []);
-
 
   return (
     <View
@@ -33,7 +32,6 @@ export default function Tasks() {
           keyExtractor={(item) => item.id}
           />
       </View>
-      <Link href='/' style={styles.button}> Home </Link>
     </View>
   );
 };

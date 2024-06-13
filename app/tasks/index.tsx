@@ -2,31 +2,54 @@ import { Link } from "expo-router";
 import { Text, View, TextInput, FlatList, SafeAreaView } from "react-native";
 import { styles } from './styles';
 import { AppButton } from "@/components/button/AppButton";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTasks } from "@/hooks/useTasks";
 import { TaskCard } from "@/components/task_card/TaskCard";
+import { CreateTaskModal } from "./modals/CreateTaskModal";
 
 export default function Tasks() {
   const {
     userTasks,
     error,
     isLoading,
-    startFetchingTasks,
+    startCreatingTask,
   } = useTasks();
+
+  const [modalState, setModalState] = useState({
+    isShown: false,
+  })
+
+  const onOpenModal = () => {
+    setModalState({
+      isShown: true,
+    });
+  }
+  
+  const onCloseModal = () => {
+    setModalState({
+      isShown: false,
+    });
+  }
+
+  const onCreateTask = (value: string) => {
+    onCloseModal();
+    const taskName = value.trim().toLowerCase();
+    if (taskName.length === 0) {
+      return;
+    }
+    // create task
+    startCreatingTask(taskName);
+  };
 
   return (
     <View
       style={styles.container}
     >
-      {/* <View style={styles.task_menu}> */}
-        {/* <Text style={styles.title}> Create Task </Text>
-        <TextInput style={styles.input} placeholder="Task Name" /> */}
         <AppButton
           customButtonStyle={styles.button}
           customTextStyle={styles.title}
           title='New Task'
-          onPress={() => {}} />
-      {/* </View> */}
+          onPress={onOpenModal} />
       <View style={styles.task_list}>
         <FlatList
           data={userTasks}
@@ -34,7 +57,11 @@ export default function Tasks() {
           keyExtractor={(item) => item.id}
           />
       </View>
-      <Link href='/' style={styles.button}> Home </Link>
+      {
+        modalState.isShown && (
+          <CreateTaskModal onClose={onCloseModal} onSave={onCreateTask} />
+        )
+      }
     </View>
   );
 }

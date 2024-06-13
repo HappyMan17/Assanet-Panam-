@@ -1,5 +1,5 @@
 import { constants } from "@/constants/Colors"
-import { Text, TouchableHighlight } from "react-native"
+import { Text, TouchableHighlight, StyleSheet } from "react-native"
 
 interface AppButtonProps {
   onPress: () => void,
@@ -21,7 +21,7 @@ export const AppButton: React.FC<AppButtonProps> = ({
   )
 }
 
-const styles = {
+const styles = StyleSheet.create({
   button: {
     width: 100,
     paddingVertical: 8,
@@ -32,6 +32,7 @@ const styles = {
   },
   text: {  
     fontSize: constants.normalFontSize,
+    textAlign: 'center',
     color: '#FFFFFF',
   }
-}
+})
