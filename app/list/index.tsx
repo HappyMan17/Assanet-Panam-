@@ -1,11 +1,10 @@
-import { Link } from "expo-router";
-import { FlatList, Text, TextInput, View } from "react-native";
+import { View } from "react-native";
 import { styles } from './styles';
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import { useTasks } from "@/hooks/useTasks";
-import { TaskCard } from "@/components/task_card/TaskCard";
+import { TaskList } from "@/components/task_list/TaskList";
 
-export default function Tasks() {
+export default function TaskListScreen() {
   const {
     tasks,
     error,
@@ -24,14 +23,11 @@ export default function Tasks() {
     <View
       style={styles.container}
     >
-      <View style={styles.task_list}>
-        <Text style={styles.title}> Fetch Task List </Text>
-        <FlatList
-          data={tasks}
-          renderItem={({item}) => <TaskCard task={item} />}
-          keyExtractor={(item) => item.id}
-          />
-      </View>
+      <TaskList
+        data={tasks}
+        isLoading={isLoading}
+        hasTitle={true} 
+        title="Tasks Fetched" />
     </View>
   );
 };

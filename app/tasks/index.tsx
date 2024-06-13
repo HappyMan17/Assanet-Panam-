@@ -1,13 +1,12 @@
-import { Link } from "expo-router";
-import { Text, View, TextInput, FlatList, SafeAreaView } from "react-native";
+import { View } from "react-native";
 import { styles } from './styles';
 import { AppButton } from "@/components/button/AppButton";
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import { useTasks } from "@/hooks/useTasks";
-import { TaskCard } from "@/components/task_card/TaskCard";
 import { CreateTaskModal } from "./modals/CreateTaskModal";
+import { TaskList } from "@/components/task_list/TaskList";
 
-export default function Tasks() {
+export default function TasksScreen() {
   const {
     userTasks,
     error,
@@ -50,13 +49,7 @@ export default function Tasks() {
           customTextStyle={styles.title}
           title='New Task'
           onPress={onOpenModal} />
-      <View style={styles.task_list}>
-        <FlatList
-          data={userTasks}
-          renderItem={({item}) => <TaskCard task={item} />}
-          keyExtractor={(item) => item.id}
-          />
-      </View>
+      <TaskList data={userTasks} isLoading={isLoading} />
       {
         modalState.isShown && (
           <CreateTaskModal onClose={onCloseModal} onSave={onCreateTask} />
