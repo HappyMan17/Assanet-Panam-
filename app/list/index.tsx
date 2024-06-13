@@ -3,6 +3,7 @@ import { styles } from './styles';
 import { useEffect } from "react";
 import { useTasks } from "@/hooks/useTasks";
 import { TaskList } from "@/components/task_list/TaskList";
+import { ErrorMessage } from "@/components/error_message/ErrorMessage";
 
 export default function TaskListScreen() {
   const {
@@ -28,6 +29,11 @@ export default function TaskListScreen() {
         isLoading={isLoading}
         hasTitle={true} 
         title="Tasks Fetched" />
+      {
+        error && (
+          <ErrorMessage message={error} />
+        )
+      }
     </View>
   );
 };

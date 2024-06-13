@@ -1,7 +1,13 @@
 import { RootState } from "@/state/store";
 import { useAppDispatch, useAppSelector } from "./reduxHooks";
 import k from "@/constants/constants";
-import { addTasks, addUserTaks, clearTasks, setErrorMessage, setIsLoading } from "@/state/slices/taskSlice";
+import {
+  addTasks,
+  addUserTaks,
+  clearTasks,
+  setErrorMessage,
+  setIsLoading
+} from "@/state/slices/taskSlice";
 import { taskMapper } from "@/mappers/taskMapper";
 import { Task } from "@/types/taksType";
 
@@ -15,6 +21,12 @@ export const useTasks = () => {
   } = useAppSelector((state: RootState) => state.task);
   const dispatch = useAppDispatch();
 
+  const clearMessage = () => {
+    setTimeout(() => {
+      dispatch(setErrorMessage(''));
+    }, 2000);
+  }
+
   const startFetchingTasks = async () => {
     try {
       dispatch(setIsLoading());
@@ -22,6 +34,7 @@ export const useTasks = () => {
       const finalTasksList: Task[] = [];
       if (!tasks) {
         dispatch(setErrorMessage('Error fetching tasks'));
+        clearMessage();
       }
       tasks.map((task: any) => {
         const currentTask = taskMapper(task);
@@ -35,6 +48,7 @@ export const useTasks = () => {
       dispatch(setIsLoading(false));
     } catch (error) {
       dispatch(setErrorMessage('Error fetching tasks'));
+      clearMessage();
     }
   };
 
