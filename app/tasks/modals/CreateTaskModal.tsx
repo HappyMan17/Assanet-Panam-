@@ -28,6 +28,7 @@ export const CreateTaskModal:React.FC<CreateTaskModalProps> = ({
               style={styles.input}
               placeholder="Task Name"
               value={taskName}
+              autoFocus={true}
               onChange={(e) => setTaskName(e.nativeEvent.text)}
             />
             <AppButton
@@ -37,6 +38,7 @@ export const CreateTaskModal:React.FC<CreateTaskModalProps> = ({
           <View style={{marginTop: 15}}>
             <AppButton
             title='Close'
+            customButtonStyle={styles.close_button}
             onPress={onClose} />
           </View>
         </View>

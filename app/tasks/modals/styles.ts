@@ -1,3 +1,4 @@
+import { constants } from "@/constants/Colors";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -5,7 +6,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#020617',
+    backgroundColor: constants.backgroundColor,
     opacity: 0.9,
   },
   card: {
@@ -17,7 +18,7 @@ export const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 6,
     borderWidth: 1,
-    borderColor: '#ffffff',
+    borderColor: 'black',
 
   },
   input: {
@@ -33,10 +34,17 @@ export const styles = StyleSheet.create({
   },
   title: {
     paddingVertical: 8,
-    // color: '#ffffff',
     borderRadius: 6,
     textAlign: 'center',
     fontSize: 30,
     fontWeight: 'bold',
+  },
+  close_button: {
+    width: 100,
+    paddingVertical: 8,
+    borderWidth: 2,
+    borderColor: '#3D656A',
+    borderRadius: 6,
+    backgroundColor: '#B74A4A',
   },
 });

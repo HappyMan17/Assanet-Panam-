@@ -6,7 +6,8 @@ import {
   addUserTaks,
   clearTasks,
   setErrorMessage,
-  setIsLoading
+  setIsLoading,
+  updateUserTasks
 } from "@/state/slices/taskSlice";
 import { taskMapper } from "@/mappers/taskMapper";
 import { Task } from "@/types/taksType";
@@ -52,6 +53,7 @@ export const useTasks = () => {
     }
   };
 
+  // user tasks
   const startCreatingTask = async (taskName: string) => {
     dispatch(setIsLoading());
     const newTask: Task = {
@@ -61,6 +63,12 @@ export const useTasks = () => {
       avatar: null,
     }
     dispatch(addUserTaks(newTask))
+    dispatch(setIsLoading(false));
+  };
+  
+  const startUpdatingTask = async (task: Task) => {
+    dispatch(setIsLoading());
+    dispatch(updateUserTasks(task))
     dispatch(setIsLoading(false));
   };
 
@@ -74,6 +82,7 @@ export const useTasks = () => {
     // METHODS
     startFetchingTasks,
     startCreatingTask,
+    startUpdatingTask,
   }
 
 };

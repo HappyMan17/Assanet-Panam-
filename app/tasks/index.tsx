@@ -6,6 +6,7 @@ import { useTasks } from "@/hooks/useTasks";
 import { CreateTaskModal } from "./modals/CreateTaskModal";
 import { TaskList } from "@/components/task_list/TaskList";
 import { ErrorMessage } from "@/components/error_message/ErrorMessage";
+import { Task } from "@/types/taksType";
 
 export default function TasksScreen() {
   const {
@@ -13,6 +14,7 @@ export default function TasksScreen() {
     error,
     isLoading,
     startCreatingTask,
+    startUpdatingTask,
   } = useTasks();
 
   const [modalState, setModalState] = useState({
@@ -41,6 +43,14 @@ export default function TasksScreen() {
     startCreatingTask(taskName);
   };
 
+  const onTaskDone = (task: Task, bool: boolean) => {
+    const newTask = {
+      ...task,
+      done: bool,
+    };
+    startUpdatingTask(newTask);
+  }
+
   return (
     <View
       style={styles.container}
@@ -50,7 +60,12 @@ export default function TasksScreen() {
         customTextStyle={styles.title}
         title='New Task'
         onPress={onOpenModal} />
-      <TaskList data={userTasks} isLoading={isLoading} />
+      <TaskList
+        data={userTasks}
+        isLoading={isLoading}
+        hasCheckbox={true}
+        onTaskPress={onTaskDone}
+      />
       
       {/* Modals */}
       {

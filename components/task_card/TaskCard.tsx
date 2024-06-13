@@ -6,15 +6,15 @@ const DEFAULTIMAGE = 'https://reactnative.dev/img/tiny_logo.png';
 
 interface TaskCardProps {
   task: Task;
-  hasCheckbox?: boolean;
+  style?: any;
 }
 
 export const TaskCard: React.FC<TaskCardProps> = ({
   task,
-  hasCheckbox = false,
+  style = {},
 }) => {
   return (
-    <View style={styles.card}>
+    <View style={{ ...styles.card, ...style }}>
       {
         !task.avatar ?
         <Image

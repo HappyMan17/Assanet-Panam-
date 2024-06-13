@@ -4,7 +4,6 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   card: {
     height: 100,
-    maxWidth: '100%',
     width: '100%',
     marginTop: 10,
     flexDirection: 'row',
